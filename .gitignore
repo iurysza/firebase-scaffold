@@ -66,3 +66,6 @@ node_modules/
 # project's service accounts
 **/service-account/
 **/functions/lib
+/functions/.DS_Store
+.idea
+.DS_Store
