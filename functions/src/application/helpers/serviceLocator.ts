@@ -14,7 +14,7 @@ export module ServiceLocator {
     if (isTest) {
       environment = firestoreTestEnv;
     } else {
-      firestoreEnv;
+      environment = firestoreEnv;
     }
   }
 
