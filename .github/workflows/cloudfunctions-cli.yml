@@ -1,0 +1,52 @@
+name: Cloud Functions CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./functions
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Create service-account folder
+        run: mkdir service-account
+      - name: Write service-account.json
+        run: echo ${{ toJson(secrets.DEV_SERVICE_ACCOUNT)}} > ./service-account/dev-service-account.json
+      - name: Build
+        run: npm run build --prod
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: firebase-scaffold
+          path: ./
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@main
+        with:
+          name: firebase-scaffold
+          path: ./
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: --project=prod deploy --only functions
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
