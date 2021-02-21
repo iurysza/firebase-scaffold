@@ -4,12 +4,6 @@
 
 - **[Improved cold start performance](#improved-cold-start)** - Cold start/boot time is one of the biggest issues many developers and companies come across when using cloud functions. This boilerplate uses the best practices to reduce the cold start time thus improving performance.
 
-- **[Improved readability & developer experience](#improved-readability-&-developer-experience)** - Using only one file, `index.js` for everything doesn't work for a serious app. It becomes hard to scan through, hard to easily follow up with the code. This boilerplate recognizes that and aims to solve that.
-
-- **[TypeScript](#typescript)** - While everything done here can be achieved using plain JavaScript, it would require more code, a lot of experience using JavaScript, and time, which in my opinion is counter-intuitive. You should not have to spend time optimizing the tool to achieve a task!
-
-- **[Express.js](#express.js)** - Every HTTP request makes use of `express.js` underneath, but explicitly using it in structuring your endpoints has proved to more beneficial, both in structure and maximization of resources.
-
 - **[Multiple environments (local, dev, prod)](#service-accounts-and-environments)** - A simple convetion enables the same code to run on multiple environments.
 
 - **[Testability](#unit-tests)** - The recomended architecture enables simple unit tests with minimum external dependencies.
