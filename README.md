@@ -6,26 +6,13 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Service Accounts and Permissions](#service-accounts-and-permissions)
-  - [Example Folder Structure](#example-folder-structure)
 - [Documentation](#documentation)
   - [Improved cold start performance](#Improved-cold-start-performance)
   - [Improved readability & developer experience](#improved-readability-&-developer-experience)
-  - [TypeScript](#typescript)
   - [Express.js](#express.js)
-  - [Eslint setup](#eslint-setup)
-- [Resources](#resources)
 
 An ever-evolving, opinionated architecture and development environment for writing and structuring google cloud functions for firebase. It takes into account performance of cloud functions, and developer productivity.
 
-> As this project is a template project and not a CLI, you have access to the entire app configuration so you can change it according to your needs.
-
-Questions, feedback, and contributions are welcome!
-
-## Why is this important?
-
-> The simplicity of Cloud Functions lets you quickly develop code and run it in a serverless environment. At moderate scale, the cost of running functions is low, and optimizing your code might not seem like a high priority. As your deployment scales up, however, optimizing your code becomes increasingly important.
->
-> -- Cloud Functions For Firebase Documentation
 
 ## Features
 
@@ -36,8 +23,6 @@ Questions, feedback, and contributions are welcome!
 - **[TypeScript](#typescript)** - While everything done here can be achieved using plain JavaScript, it would require more code, a lot of experience using JavaScript, and time, which in my opinion is counter-intuitive. You should not have to spend time optimizing the tool to achieve a task!
 
 - **[Express.js](#express.js)** - Every HTTP request makes use of `express.js` underneath, but explicitly using it in structuring your endpoints has proved to more beneficial, both in structure and maximization of resources.
-
-- **[Eslint setup](#eslint-setup)** - An extensible eslint configuration, that gets you up and running
 
 - **[Multiple environments (local, dev, prod)](#service-accounts-and-environments)** - A simple convetion enables the same code to run on multiple environments.
 
@@ -66,10 +51,6 @@ One is meant to be a development environment, `dev` and the other should be a pr
 - `deploy:prod` runs a `shell` script that makes sure we're using `prod` credentials
 
 
-### Example Folder Structure
-
-![Folder Structure](https://res.cloudinary.com/cheapflix/image/upload/v1596049949/projects-images/Screenshot_from_2020-07-29_20-06-46.png)
-
 ## Documentation
 
 ### Improved cold start performance
@@ -84,29 +65,9 @@ Using only one file, `index.js`, for everything doesn't work for a serious app. 
 
 There have been a lot of ways suggested to split cloud functions properly, Firebase also has [suggestions](https://firebase.google.com/docs/functions/organize-functions), but it doesn't take into account the effect on the **cold start time**.
 
-### TypeScript
-
-While everything done here can be achieved using plain JavaScript, it would require more code, more time, and a lot of experience using JavaScript, which in my opinion is counter-intuitive. You should not have to spend time fighting with the tool and trying to optimize it to achieve a task.
-
-TypeScript removes that overhead, providing a more convenient means of writing JavaScript. It's also [advised](https://www.youtube.com/watch?v=tResEeK6P5I&t=1514s) to write cloud functions using TypeScript.
-
 ### Express.js
 
 Every Firebase HTTP function makes use of `express.js` underneath. Explicitly using it in structuring your endpoints has proved to more beneficial, both in structure and maximization of resources.
 
 - All your HTTP requests are now accessed through one Cloud Function. This helps with the "Number of functions" limit (which is 1,000), meaning no matter the number of endpoints you have, they would all count as one function.
 - Improves cold start time - Due to the way cloud functions are invoked, having all endpoints accessible through one function enables instances to be reused.
-
-### Eslint setup
-
-An extensible eslint configuration, that gets you up and running
-
-## Resources
-
-- [Cloud Functions Documentation](https://firebase.google.com/docs/functions)
-- [Optimizing Networking](https://firebase.google.com/docs/functions/networking)
-- [Quotas and Limits](https://firebase.google.com/docs/functions/quotas)
-- [Building idempotent functions](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-building-idempotent-functions)
-- [Using retries to build reliable serverless systems](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-using-retries-to-build-reliable-serverless-systems)
-- [Organize Cloud Functions for max cold start performance and readability with TypeScript and Firebase](https://medium.com/firebase-developers/organize-cloud-functions-for-max-cold-start-performance-and-readability-with-typescript-and-9261ee8450f0)
-
