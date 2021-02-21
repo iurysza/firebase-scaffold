@@ -1,16 +1,5 @@
 # An opinionated firebase scaffold
 
-- [Why is this important?
-  ](#why-is-this-important)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [Service Accounts and Permissions](#service-accounts-and-permissions)
-- [Documentation](#documentation)
-  - [Improved cold start performance](#Improved-cold-start-performance)
-  - [Improved readability & developer experience](#improved-readability-&-developer-experience)
-  - [Express.js](#express.js)
-
 An ever-evolving, opinionated architecture and development environment for writing and structuring google cloud functions for firebase. It takes into account performance of cloud functions, and developer productivity.
 
 
